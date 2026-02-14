@@ -1,0 +1,78 @@
+{{ 'benefits.css' | asset_url | stylesheet_tag }}
+
+<section class="section-benefits">
+  <div class="container">
+    <div class="wrap-content">
+      <div>
+        <h2 class="benefits-title">{{ section.settings.heading }}</h2>
+        <p class="benefits-description">{{ section.settings.description }}</p>
+        <img
+          class="benefits-badges-image"
+          src="{{ 'badges.png' | asset_url }}"
+          alt="Product benefits badges"
+          loading="lazy"
+          width="367"
+          height="136"
+        >
+
+        <a href="" class="benefits-btn">shop bestsellers</a>
+      </div>
+      <img
+        class="benefits-img"
+        src="{{ 'imgOne.jpg' | asset_url }}"
+        alt="buttle"
+        loading="lazy"
+        width="590"
+        height="719"
+      >
+    </div>
+
+    <div class="wrap-content-benefits">
+      <img
+        class="benefits-img"
+        src="{{ 'imgTwo.jpg' | asset_url }}"
+        alt="buttle"
+        loading="lazy"
+        width="590"
+        height="719"
+      >
+      <div>
+        <h2 class="benefits-title">{{ section.settings.benefits-heading }}</h2>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "benefits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Quality guarantee"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section description",
+      "default": "Two of our core brand values are quality & trust, which is why everything we do is built on a foundation of excellence & transparency. Our products are -"
+    },
+    {
+      "type": "text",
+      "id": "benefits-heading",
+      "label": "Benefits heading",
+      "default": "Why thousands elevate their evenings with Zooz?"
+    }
+  ],
+  "presets": [
+    {
+      "name": "benefits"
+    }
+  ]
+}
+{% endschema %}

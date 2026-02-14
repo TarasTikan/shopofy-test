@@ -1,44 +1,98 @@
 <section style="padding: 40px">
   <h2>Liquid Playground</h2>
 
-  {% assign name = section.settings.name  %}
+  {% assign name = section.settings.name %}
   <p>Name: {{ name }}</p>
-<div {{ section.shopify_attributes }}>
-  {% if name == 'Taras' %}
-    <p>Привіт Тарас 👋</p>
-  {% else %}
-    <p>Невідомий юзер</p>
-  {% endif %}
+  <div {{ section.shopify_attributes }}>
+    {% if name == 'Taras' %}
+      <p>Привіт Тарас 👋</p>
+    {% else %}
+      <p>Невідомий юзер</p>
+    {% endif %}
   </div>
 
+  {% assign title = ' taras developer ' %}
+  <p>{{ title | strip | capitalize | truncate: 10 }}</p>
 
-  {% assign title = " taras developer " %}
-  <p>{{ title | strip | capitalize | truncate: 10}}</p>
-
-  {% if title contains "developer"  %}
+  {% if title contains 'developer' %}
     <p>Hello developer</p>
   {% else %}
     <p>Hello default human</p>
+  {% endif %}
+
+  {% assign price = 100 %}
+  <p>{{ price | times: 1.2 }}%</p>
+  <p>{{ price | minus: 10 }}</p>
+  <p>{{ price | times: 2 }}</p>
+  <p>{{ price | divided_by: 4 | times: 2 }}</p>
+
+  {% assign fruits = 'apple,banana,orange' | split: ',' %}
+  {% for item in fruits %}
+    <p>{{ item | capitalize }}</p>
+  {% endfor %}
+
+  <p>Total fruits: {{ fruits.size }}</p>
+
+  <p>Firts fruits: {{ fruits.first }}</p>
+  <p>last fruits: {{ fruits.last }}</p>
+
+  {% if price >= 12500 %}
+    <p>Premium</p>
+  {% elsif price >= 100 %}
+    <p>Standard</p>
+  {% else %}
+    <p>Budget</p>
+  {% endif %}
+
+  {% assign sales = 'sale,new,hot' | strip %}
+  {% if sales contains 'sale' %}
+    <p>Show discount badge.</p>
+  {% endif %}
+
+  {% if sales == blank %}
+    <p>Пусто</p>
+  {% else %}
+    <p>Текст є</p>
+  {% endif %}
+
+  {% assign title = 'Cool Sneakers' %}
+
+  <p>{{ title | truncate: 20 }}</p>
+  <p>{{ price | money }}</p>
+
+  {% assign block = "fast delivery,secure payment,24/7 support" | split: ","%}
+  {% for bloc in block %}
+  <div class="feature">
+{{ bloc }}
+</div>
+  {% endfor %}
+
+  {% if title == blank %}
+    <p>No title</p>
+  {% else %}
+    <p>масив не пустий</p>
     {% endif %}
 
-    {% assign price = 100 %}
-    <p>{{ price | times: 1.2 }}%</p>
-    <p>{{ price | minus: 10}}</p>
-    <p>{{ price | times: 2}}</p>
-    <p>{{ price | divided_by: 4 | times: 2}}</p>
-
-    {% assign fruits = "apple,banana,orange" | split: "," %}
-   {% for item in fruits %}
-    <p>{{ item | capitalize }}</p>
-    {% endfor %}
+    <p>{{ "Shopify is awesome" | replace: "awesome", "powerful" }}</p>
 </section>
 
 {% schema %}
 {
-    "name": "training play",
-    "settings": [
-        {"type": "text", "id": "name", "label": "name", "default": "Tarфіввas"}
-    ],
-    "presets": [{"name": "training play"}]
+  "name": "training play",
+  "settings": [{ "type": "text", "id": "name", "label": "name", "default": "Tarфіввas" }],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "description"
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "training play" }]
 }
 {% endschema %}
