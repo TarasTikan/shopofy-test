@@ -1,0 +1,44 @@
+{{ 'training-section.css' | asset_url | stylesheet_tag }}
+
+<section class="training">
+  <div class="training__container">
+    <h2 class="training__title">{{ section.settings.title }}</h2>
+
+    <div class="training__grid">
+      {% for block in section.blocks %}
+        <div class="training__card" {{ block.shopify_attributes }}>
+          <h3 class="training__card-title">{{ block.settings.heading }}</h3>
+          <p class="training__card-text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Training Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "My first section"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Training Section" }
+  ]
+}
+{% endschema %}
