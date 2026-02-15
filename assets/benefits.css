@@ -152,9 +152,11 @@ h6 {
   border-radius: 8px;
   font-family: "Anek Latin", Helvetica;
   background-color: #185676;
-  padding: 14px 32px;
+  padding: 18px 67px;
   color: white;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 24px;
   text-align: center;
   cursor: pointer;
@@ -176,6 +178,7 @@ h6 {
     line-height: 100%;
     letter-spacing: -0.03em;
     margin-top: 35px;
+    padding: 20px 76px;
   }
 }
 
